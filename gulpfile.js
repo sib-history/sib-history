@@ -11,7 +11,7 @@ var debug = require('gulp-debug');
 
 var config = {
     server: {
-        baseDir: "./build"
+        baseDir: "."
     },
     tunnel: false,
     host: 'localhost',
