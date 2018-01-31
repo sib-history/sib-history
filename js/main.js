@@ -30,3 +30,11 @@ if (checkElementExistance('.news-slider')) {
         ]
     });
 }
+if (checkElementExistance('.video-slider')) {
+    $('.video-slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: false,
+        dots: true
+    });
+}

@@ -32,6 +32,10 @@ a {
   padding: 0 10px;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .header {
   padding: 10px 20px;
   position: absolute;
@@ -102,6 +106,39 @@ a {
     a {
       color: inherit;
       text-decoration: inherit;
+    }
+  }
+  &__projects {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    &-item {
+      max-width: 300px;
+      padding: 0 15px;
+    }
+    a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+    &-img {
+      display: block;
+      max-width: 80px;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+    &-title {
+      display: block;
+      margin-top: 5px;
+      text-align: center;
+      font-size: 11px;
+      color: #fff;
+    }
+    @media (max-width: 1200px) {
+      display: none;
     }
   }
   @media (max-width: 600px) {
@@ -524,7 +561,18 @@ a {
     margin: 24px auto;
   }
 }
-
+.docs-page {
+  &__doc {
+    text-align: center;
+    img {
+      display: inline-block;
+      max-width: 400px;
+    }
+    a, a:hover {
+      box-shadow: none;
+    }
+  }
+}
 .news-slider {
   margin: 0 -7px;
   a {
@@ -539,7 +587,40 @@ a {
     }
   }
 }
-
+.video-slider {
+  list-style: none;
+  li {
+    display: block;
+  }
+  iframe {
+    display: block;
+    width: 560px;
+    height: 315px;
+    margin: 0 auto;
+  }
+}
+.slick-slider {
+  .slick-prev, .slick-next {
+    width: 34px;
+    height: 34px;
+    &:before {
+      font-size: 34px;
+      color: $color-primary;
+    }
+  }
+  .slick-dots li button:before {
+    font-size: 15px;
+  }
+  .slick-dots li button:before {
+    color: $color-primary;
+  }
+  .slick-dots li.slick-active button:before {
+    color: lighten($color-primary, 10);
+  }
+  .slick-slide:focus {
+    outline: none;
+  }
+}
 @media screen and (max-width: 1060px) {
   .feature {
     font-size: 0.92em;
