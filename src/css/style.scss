@@ -197,11 +197,22 @@ a {
     list-style: none;
   }
   &__partner {
+    width: 33.3333%;
     margin: 0 10px;
     filter: grayscale(100%);
     transition: 0.3s all ease;
     &:hover {
       filter: unset;
+    }
+    a {
+      display: flex;
+      min-height: 100px;
+      align-items: center;
+    }
+    img {
+      display: block;
+      max-height: 100px;
+      margin: 0 auto;
     }
   }
   &__copyright {
