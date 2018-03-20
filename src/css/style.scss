@@ -126,7 +126,7 @@ a {
     }
     &-img {
       display: block;
-      max-width: 80px;
+      max-width: 110px;
       margin: 0 auto;
       border-radius: 50%;
     }
@@ -199,7 +199,7 @@ a {
   &__partner {
     width: 33.3333%;
     margin: 0 10px;
-    filter: grayscale(100%);
+    //filter: grayscale(100%);
     transition: 0.3s all ease;
     &:hover {
       filter: unset;
