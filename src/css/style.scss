@@ -36,6 +36,23 @@ a {
   text-align: center;
 }
 
+.logo-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  li {
+    display: block;
+    margin: 10px 20px;
+    img {
+      margin: 0;
+      filter: drop-shadow(2px 2px 1px #777);
+    }
+  }
+}
+
 .header {
   padding: 10px 20px;
   position: absolute;
