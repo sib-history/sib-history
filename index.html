@@ -22,6 +22,19 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="css/style.css" media="all">
+    
+    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flamelink/dist/flamelink.js"></script>
+    <script type="text/javascript">
+        const app = flamelink({
+            apiKey: 'AIzaSyBXoLJLIQstncqbNBFXseFG2McuusV6v7Q',                     // required
+            authDomain: 'flamelink-history.firebaseapp.com',             // required
+            databaseURL: 'https://flamelink-history.firebaseio.com',           // required
+            projectId: 'flamelink-history',               // required
+            storageBucket: 'flamelink-history.appspot.com',  // required
+            messagingSenderId: '116757055848',     // optional
+        });
+    </script>
 </head>
 <body>
 <div class="wrapper main-page">
@@ -33,7 +46,7 @@
             </a>
             <ul class="header__projects">
                 <li class="header__projects-item">
-                    <a href="conference_revolution.html" title="Октябрьская революция 1917 года в России и ее роль в мировой истории">
+                    <a href="project.html?page=1540075894900" title="Октябрьская революция 1917 года в России и ее роль в мировой истории">
                         <img class="header__projects-img" src="img/project-icon1.png" alt="Октябрьская революция 1917 года в России и ее роль в мировой истории">
                     </a>
                 </li>
@@ -75,7 +88,7 @@
         </a>
     </section>
     <section class="feature">
-        <a href="telemost.html" class="feature__inner" style="background-image: url('img/telemost_1.jpg')">
+        <a href="project.html?page=1540075583980" class="feature__inner" style="background-image: url('img/telemost_1.jpg')">
             <div class="feature__details">
                 <div class="feature__tagline">
                     <span class="feature__tag">события</span>
@@ -88,7 +101,7 @@
         </a>
     </section>
     <section class="feature _double">
-        <a href="elektronnaya-kollekciya-dokumentov.html" class="feature__inner" style="background-image: url('img/feature1__bg.jpg')">
+        <a href="project.html?page=1540075349397" class="feature__inner" style="background-image: url('img/feature1__bg.jpg')">
             <div class="feature__details">
                 <div class="feature__tagline">
                     <span class="feature__tag">архивы</span>
@@ -113,7 +126,7 @@
         </a>
     </section>
     <section class="feature">
-        <a href="kraevedcheskiy-desant.html" class="feature__inner" style="background-image: url('img/desant_1.jpg')">
+        <a href="project.html?page=1540074149838" class="feature__inner" style="background-image: url('img/desant_1.jpg')">
             <div class="feature__details">
                 <div class="feature__tagline">
                     <span class="feature__tag">образование</span>
@@ -154,30 +167,7 @@
             <div>
                 <h3>Наши партнеры</h3>
                 <ul class="footer__partners">
-                    <li class="footer__partner">
-                        <a href="http://www.siu.ranepa.ru/" class="footer__partner-logo"><img src="img/partner2.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="http://rushistory.org/" class="footer__partner-logo"><img src="img/partner1.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="https://www.nso.ru/" class="footer__partner-logo"><img src="img/partner3.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="https://www.nsu.ru/n/" class="footer__partner-logo"><img src="img/partner4.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="http://www.history.nsc.ru/" class="footer__partner-logo"><img src="img/partner5.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="http://www.archaeology.nsc.ru/" class="footer__partner-logo"><img src="img/partner6.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="http://ngonb.ru/" class="footer__partner-logo"><img src="img/partner7.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="http://www.nziv.ru/" class="footer__partner-logo"><img src="img/partner8.png"></a>
-                    </li>
+    
                 </ul>
             </div>
         </div>

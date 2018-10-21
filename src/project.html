@@ -4,24 +4,31 @@
     //= components/head.html
 </head>
 <body>
-<div class="wrapper single-page about-page">
+<div class="wrapper single-page single-news-page">
     <div class="subwrapper">
         //= components/header.html
         <section class="feature">
             <div class="feature__inner">
                 <div class="feature__details">
+                    <div class="feature__tagline">
+                        <span class="feature__tag">проекты</span>
+                    </div>
                     <h2 class="feature__heading"></h2>
                 </div>
             </div>
         </section>
         <main class="main">
             <div class="container">
-                <article class="article"></article>
+                <article class="article">
+                    <div class="article__body"></div>
+                    <div class="news-slider"></div>
+                    <ul class="video-slider"></ul>
+                </article>
             </div>
         </main>
     </div>
     //= components/footer.html
-    <script src="js/about_scripts.js"></script>
+    <script src="js/project_scripts.js"></script>
 </div>
 </body>
 </html>
