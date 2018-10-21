@@ -12,16 +12,16 @@ async function fillPage() {
 
     let sortedData = {};
     let counter = -1;
-    let noOrederedItems = [];
+    let noOrderedItems = [];
     for (key in data) {
         if (data[key].order > -1) {
             sortedData[data[key].order] = data[key];
             counter++;
         } else {
-            noOrederedItems.push(data[key]);
+            noOrderedItems.push(data[key]);
         }
     }
-    noOrederedItems.forEach(function (item) {
+    noOrderedItems.forEach(function (item) {
         counter++;
         sortedData[counter] = item;
     });

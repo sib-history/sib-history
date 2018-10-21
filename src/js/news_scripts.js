@@ -11,11 +11,19 @@ async function fillPage() {
 
     let sortedData = {};
     let counter = -1;
+    let noOrderedItems = [];
     for (key in data) {
-        sortedData[data[key].order] = data[key];
-        counter++;
+        if (data[key].order > -1) {
+            sortedData[data[key].order] = data[key];
+            counter++;
+        } else {
+            noOrderedItems.push(data[key]);
+        }
     }
-
+    noOrderedItems.forEach(function (item) {
+        counter++;
+        sortedData[counter] = item;
+    });
     renderEntries(5);
 
     function renderEntries(amount) {
