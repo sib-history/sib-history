@@ -26,6 +26,10 @@ a {
   overflow: hidden;
 }
 
+.subwrapper {
+  min-height: 100vh;
+}
+
 .container {
   max-width: 900px;
   margin: 0 auto;
@@ -391,7 +395,8 @@ a {
 }
 .news-page {
   &__list {
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
   }
@@ -404,9 +409,23 @@ a {
       max-width: 300px;
       min-width: 300px;
       margin-right: 15px;
+
       img {
         display: block;
       }
+
+      &_blank {
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          background: $color-primary;
+        }
+        img {
+          display: none;
+        }
+      }
+
     }
     &-heading {
       margin-top: 0;
@@ -448,6 +467,7 @@ a {
       left: 0;
       width: 100%;
       height: 100%;
+      background: $color-primary;
       overflow: hidden;
       transition: 0.7s all;
       cursor: pointer;
@@ -628,6 +648,38 @@ a {
     margin: 0 auto;
   }
 }
+
+.show-more {
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: 10px auto;
+  border: 2px solid $color-primary;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 2px;
+    background: $color-primary;
+    transform: translate(-50%, -50%);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 50%;
+    background: $color-primary;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .slick-slider {
   .slick-prev, .slick-next {
     width: 34px;

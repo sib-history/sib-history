@@ -22,204 +22,78 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="css/style.css" media="all">
+    
+    <script src="https://www.gstatic.com/firebasejs/5.5.4/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flamelink/dist/flamelink.js"></script>
+    <script type="text/javascript">
+        const app = flamelink({
+            apiKey: 'AIzaSyBXoLJLIQstncqbNBFXseFG2McuusV6v7Q',                     // required
+            authDomain: 'flamelink-history.firebaseapp.com',             // required
+            databaseURL: 'https://flamelink-history.firebaseio.com',           // required
+            projectId: 'flamelink-history',               // required
+            storageBucket: 'flamelink-history.appspot.com',  // required
+            messagingSenderId: '116757055848',     // optional
+        });
+    </script>
 </head>
 <body>
 <div class="wrapper single-page news-page">
-    <header class="header">
-        <div class="header__top">
-            <a href="index.html" class="header__logo">
-                <img src="img/logo.png" class="header__logo-img">
-                <span class="header__logo-text">АНО "Историческое общество Сибирского федерального округа"</span>
-            </a>
-            <ul class="header__projects">
-                <li class="header__projects-item">
-                    <a href="conference_revolution.html" title="Октябрьская революция 1917 года в России и ее роль в мировой истории">
-                        <img class="header__projects-img" src="img/project-icon1.png" alt="Октябрьская революция 1917 года в России и ее роль в мировой истории">
-                    </a>
-                </li>
-            </ul>
-            <div class="header__contacts">
-                <a  data-fancybox href="https://www.google.ru/maps/place/%D1%83%D0%BB.+%D0%9E%D1%80%D0%B4%D0%B6%D0%BE%D0%BD%D0%B8%D0%BA%D0%B8%D0%B4%D0%B7%D0%B5,+38,+%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA,+%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB.,+630099/@55.0322419,82.9332299,16.5z/data=!4m5!3m4!1s0x42dfe5dd3526c189:0x6fedcbcc9e5d678f!8m2!3d55.032142!4d82.935984" target="_blank"><span class="header__contacts-item">РОССИЯ, 630099,</span> <span
-                        class="header__contacts-item">г. Новосибирск,</span>
-                    <span class="header__contacts-item">ул. Орджоникидзе, 38,</span> <span
-                            class="header__contacts-item">офис 703</span></a><br>
-                <span class="header__contacts-item">тел. <a href="tel:+73833637606">363-76-06</a>,</span> <span
-                    class="header__contacts-item">факс <a
-                    href="tel:+73833637607">8(383) 363-76-07</a></span><br>
-                <span class="header__contacts-item"><a href="mailto:ekaterinavboldyreva@yandex.ru">e-mail: ekaterinavboldyreva@yandex.ru</a></span><br>
-                <span class="header__contacts-item"><a href="mailto:Bestler@mail.ru">e-mail: Bestler@mail.ru</a></span>
+    <div class="subwrapper">
+        <header class="header">
+            <div class="header__top">
+                <a href="index.html" class="header__logo">
+                    <img src="img/logo.png" class="header__logo-img">
+                    <span class="header__logo-text">АНО "Историческое общество Сибирского федерального округа"</span>
+                </a>
+                <ul class="header__projects">
+                    <li class="header__projects-item">
+                        <a href="project.html?page=1540075894900" title="Октябрьская революция 1917 года в России и ее роль в мировой истории">
+                            <img class="header__projects-img" src="img/project-icon1.png" alt="Октябрьская революция 1917 года в России и ее роль в мировой истории">
+                        </a>
+                    </li>
+                </ul>
+                <div class="header__contacts">
+                    <a  data-fancybox href="https://www.google.ru/maps/place/%D1%83%D0%BB.+%D0%9E%D1%80%D0%B4%D0%B6%D0%BE%D0%BD%D0%B8%D0%BA%D0%B8%D0%B4%D0%B7%D0%B5,+38,+%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA,+%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB.,+630099/@55.0322419,82.9332299,16.5z/data=!4m5!3m4!1s0x42dfe5dd3526c189:0x6fedcbcc9e5d678f!8m2!3d55.032142!4d82.935984" target="_blank"><span class="header__contacts-item">РОССИЯ, 630099,</span> <span
+                            class="header__contacts-item">г. Новосибирск,</span>
+                        <span class="header__contacts-item">ул. Орджоникидзе, 38,</span> <span
+                                class="header__contacts-item">офис 703</span></a><br>
+                    <span class="header__contacts-item">тел. <a href="tel:+73833637606">363-76-06</a>,</span> <span
+                        class="header__contacts-item">факс <a
+                        href="tel:+73833637607">8(383) 363-76-07</a></span><br>
+                    <span class="header__contacts-item"><a href="mailto:ekaterinavboldyreva@yandex.ru">e-mail: ekaterinavboldyreva@yandex.ru</a></span><br>
+                    <span class="header__contacts-item"><a href="mailto:Bestler@mail.ru">e-mail: Bestler@mail.ru</a></span>
+                </div>
             </div>
-        </div>
-        <nav class="header__menu">
-            <div class="header__menu-mobile-icon icon-menu">меню</div>
-            <ul class="header__menu-list">
-                <li class="header__menu-item"><a href="about.html">О нас</a></li>
-                <li class="header__menu-item"><a href="news.html">Новости</a></li>
-                <li class="header__menu-item"><a href="projects.html">Проекты</a></li>
-                <li class="header__menu-item"><a href="docs.html">Документы</a></li>
-                <!--<li class="header__menu-item"><a href="articles.html">Статьи</a></li>-->
-            </ul>
-        </nav>
-    </header>
-    <section class="feature">
-        <div class="feature__inner" style="background-image: url('img/news-header.jpg')">
-            <div class="feature__details">
-                <h2 class="feature__heading">Новости</h2>
+            <nav class="header__menu">
+                <div class="header__menu-mobile-icon icon-menu">меню</div>
+                <ul class="header__menu-list">
+                    <li class="header__menu-item"><a href="about.html">О нас</a></li>
+                    <li class="header__menu-item"><a href="news.html">Новости</a></li>
+                    <li class="header__menu-item"><a href="projects.html">Проекты</a></li>
+                    <li class="header__menu-item"><a href="docs.html">Документы</a></li>
+                    <!--<li class="header__menu-item"><a href="articles.html">Статьи</a></li>-->
+                </ul>
+            </nav>
+        </header>
+        <section class="feature">
+            <div class="feature__inner" style="background-image: url('img/news-header.jpg')">
+                <div class="feature__details">
+                    <h2 class="feature__heading">Новости</h2>
+                </div>
             </div>
-        </div>
-    </section>
-    <main class="main">
-        <div class="container">
-            <ul class="news-page__list">
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news__vstrecha-s-zhitelyami.html"><img src="img/news__vstrecha-s-zhitelyami5.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news__vstrecha-s-zhitelyami.html">Встречи с жителями муниципальных районов Новосибирской Области</a></h2>
-                        <p class="news-page__item-description">
-                            Директор АНО «Исторического общества СФО» Болдырева Е.В. являясь доверенным лицом ВРИО губернатора НСО А.А. Травникова в рамках предвыборной кампании 2018 года объехала много районов региона.
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news_civil-war.html"><img src="img/news_civil-war1_1.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news_civil-war.html">Гражданская война.  Многовекторный поиск гражданского мира</a></h2>
-                        <p class="news-page__item-description">
-                            25 июня в Епархиальном управлении  г.Новосибирска состоялось рабочее совещание по вопросу проведения Всероссийской научно-практической конференции «Гражданская война.  Многовекторный поиск гражданского мира».
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news_RPC-medal.html"><img src="img/news_RPC-medal1.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news_RPC-medal.html">Митрополит наградил медалью директора Исторического общества СФО</a></h2>
-                        <p class="news-page__item-description">
-                            15 мая Митрополит Новосибирский и Бердский Тихон наградил
-                            Директора АНО « Историческое общество СФО» Болдыреву Е.В.
-                            Юбилейной медалью Русской Православной Церкви «В память
-                            100- летия восстановления Патриаршества в Русской Православной
-                            Церкви». Митрополит поблагодарил Болдыреву Е.В. за активное
-                            участие в общественной жизни Новосибирской области. Эта
-                            награда учреждена РПЦ в 2017 году.
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news__state-society-church.html"><img src="img/news__state-society-church.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news__state-society-church.html">29 – 30 мая в Правительстве НСО   прошла  конференция « Государство. Общество. Церковь»</a></h2>
-                        <p class="news-page__item-description">
-                            Она стала крупнейшей научной площадкой, на которой ученые России обсудили современную миграционную картину мира сквозь призму гуманитарной науки. АНО « Историческое Общество СФО» в третий раз  стало  активным организатором и участником этого мероприятия.
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news__privetstvie-sibeirsky-ogon2018.html"><img src="img/news__privetstvie-sibeirsky-ogon2018_photo.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news__privetstvie-sibeirsky-ogon2018.html">Дорогие друзья, участники и гости фестиваля " Сибирский Огонь"!</a></h2>
-                        <p class="news-page__item-description">
-                            АНО « Историческое общество СФО» совместно с Правительством Новосибирской области 11 июня проводит седьмомой международный военно–исторический фестиваль «Сибирский огонь»
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news__pozdravlenie-eparhii-so-105.html"><img src="img/news__pozdravlenie-eparhii-so-105_1.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news__pozdravlenie-eparhii-so-105.html">АНО Историческое Общество СФО поздравляет Новосибирскую Епархию</a></h2>
-                        <p class="news-page__item-description">
-                            АНО Историческое Общество СФО поздравляет   Новосибирскую Епархию с 95 – летием и 105 –летием Вознесенского кафедрального собора
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news__forum-grantov-2018.html"><img src="img/news__forum-grantov-2018_1.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news__forum-grantov-2018.html">Форум Президентских грантов 11.05 2018г.</a></h2>
-                        <p class="news-page__item-description">
-                            АНО « Историческое общество СФО» совместно с Правительством Новосибирской области 11 июня проводит седьмомой международный  военно – исторический  фестиваль «Сибирский огонь». Подготовка вышла на финишную прямую.
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news__sibirsky-ogon.html"><img src="img/news__sibirsky-ogon_1.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news__sibirsky-ogon.html">«Сибирский огонь»: от викингов до танков</a></h2>
-                        <p class="news-page__item-description">
-                            АНО « Историческое общество СФО» совместно с Правительством Новосибирской области 11 июня проводит седьмомой международный  военно – исторический  фестиваль «Сибирский огонь». Подготовка вышла на финишную прямую.
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news__archive-day.html"><img src="img/news__archive-day_1.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news__archive-day.html">10 марта - День архивов в России. Поздравляем архивистов!</a></h2>
-                        <p class="news-page__item-description">
-                            Сегодня, 10  марта, в России отмечается День архивов. Эта памятная дата была учреждена 5 марта 2003 года Решением коллегии Федеральной архивной службы России, и выбрана она не случайно.
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news_derevyanko.html"><img src="img/news__drevyanko1.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news_derevyanko.html">Юбилей Деревянко А.П.</a></h2>
-                        <p class="news-page__item-description">
-                            9 января 2018 года Анатолию Пантелеевичу Деревянко исполнилось 75 лет.
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news__stalingrad.html"><img src="img/news__stalingrad1.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news__stalingrad.html">2 февраля - День победы советского народа в Сталинградской битве</a></h2>
-                        <p class="news-page__item-description">
-                            История Сталинградской битвы в архивных документах, фотографиях и кинохронике стала доступна всем пользователям сети.
-                        </p>
-                    </div>
-                </li>
-                <li class="news-page__item">
-                    <div class="news-page__item-img"><a href="news_uchebny-god.html"><img src="img/uchebny-god2.jpg"></a></div>
-                    <div class="news-page__item-body">
-                        <h2 class="news-page__item-heading"><a href="news_uchebny-god.html">Учебный год в школах Новосибирской
-                            области начнется с уроков истории региона</a></h2>
-                        <p class="news-page__item-description">
-                            24 августа состоялось пленарное заседание  XVII съезда работников
-                            образования Новосибирской области «Система образования
-                            Новосибирской области: гордимся прошлым, проектируем будущее».
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </main>
+        </section>
+        <main class="main">
+            <div class="container">
+                <ul class="news-page__list"></ul>
+            </div>
+        </main>
+    </div>
     <footer class="footer">
         <div class="container">
             <div>
                 <h3>Наши партнеры</h3>
                 <ul class="footer__partners">
-                    <li class="footer__partner">
-                        <a href="http://www.siu.ranepa.ru/" class="footer__partner-logo"><img src="img/partner2.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="http://rushistory.org/" class="footer__partner-logo"><img src="img/partner1.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="https://www.nso.ru/" class="footer__partner-logo"><img src="img/partner3.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="https://www.nsu.ru/n/" class="footer__partner-logo"><img src="img/partner4.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="http://www.history.nsc.ru/" class="footer__partner-logo"><img src="img/partner5.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="http://www.archaeology.nsc.ru/" class="footer__partner-logo"><img src="img/partner6.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="http://ngonb.ru/" class="footer__partner-logo"><img src="img/partner7.png"></a>
-                    </li>
-                    <li class="footer__partner">
-                        <a href="http://www.nziv.ru/" class="footer__partner-logo"><img src="img/partner8.png"></a>
-                    </li>
+    
                 </ul>
             </div>
         </div>
@@ -232,6 +106,16 @@
     <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
     <script type="text/javascript" src="js/slick.js"></script>
     <script src="js/main.js"></script>
+    <div class="hidden news-page__template" hidden>
+        <li class="news-page__item">
+            <div class="news-page__item-img"><a href="#"><img src="#"></a></div>
+            <div class="news-page__item-body">
+                <h2 class="news-page__item-heading"><a href="#"></a></h2>
+                <p class="news-page__item-description"></p>
+            </div>
+        </li>
+    </div>
+    <script src="js/news_scripts.js"></script>
 </div>
 </body>
 </html>
