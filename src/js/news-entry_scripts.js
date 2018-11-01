@@ -3,6 +3,8 @@ fillPage();
 
 async function fillPage() {
 
+    switchLoading(true);
+
     let data = await app.content.getByField('news', 'id', page, {
         populate: ['imgSlider', 'banner'],
         fields: [ 'title', 'imgSlider', 'videoSlider', 'article', 'banner', 'tag' ]
@@ -27,6 +29,8 @@ async function fillPage() {
         let link = data.videoSlider[key].videoLink;
         $('.video-slider').append('<li><iframe src="https://www.youtube.com/embed/'+link+'" frameborder="0" allow="encrypted-media" allowfullscreen></iframe></li>');
     }
+
+    switchLoading(false);
 
 
     loadNewsSlider(data);

@@ -1,6 +1,9 @@
 fillPage();
 
 async function fillPage() {
+
+    switchLoading(true);
+
     let data = await app.content.get('projects', {
         populate: ['preview'],
         fields: [ 'id', 'title', 'description', 'preview', 'order' ]
@@ -28,6 +31,8 @@ async function fillPage() {
     renderEntries(5);
 
     function renderEntries(amount) {
+
+        switchLoading(true);
 
         let loopCounter = 0;
         let promiseCounter = 0;
@@ -85,6 +90,8 @@ async function fillPage() {
 
             }
 
+            switchLoading(false);
+
             if(!$('.show-more').length) {
                 $('.projects-page__list').after('<div class="show-more" title="Показать больше проектов"></div>');
                 $('.show-more').on('click', function () {
@@ -100,6 +107,8 @@ async function fillPage() {
 
 
     }
+
+    switchLoading(false);
 
 }
 

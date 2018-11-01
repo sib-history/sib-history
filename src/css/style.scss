@@ -57,6 +57,27 @@ a {
   }
 }
 
+.loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.5);
+
+  &_active {
+    display: flex;
+  }
+
+  &__img {
+    display: block;
+  }
+
+}
+
 .header {
   padding: 10px 20px;
   position: absolute;

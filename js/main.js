@@ -7,6 +7,22 @@ $(document).on('click', '.projects-page__item-preview', function () {
     $(this).parent().addClass('_active');
 });
 
+function switchLoading(boolean) {
+    var $loading = $('.loading');
+    if (!$loading.length) return;
+
+    if(boolean) {
+        $loading.addClass('loading_active');
+
+        setTimeout(function () {
+            switchLoading(false);
+        }, 5000)
+
+    } else {
+        $loading.removeClass('loading_active');
+    }
+}
+
 function loadNewsSlider(pageData) {
     if (!checkElementExistance('.news-slider') || !pageData.imgSlider) return;
 
