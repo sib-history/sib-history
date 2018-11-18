@@ -38,22 +38,27 @@ async function fillVideos() {
         let imgsReady = false;
         for (let total = counter, subcounter = counter; subcounter >= 0 && subcounter > (total - amount); subcounter -- ) {
             loopCounter++;
-            app.storage.getURL(sortedData[subcounter].cover[0].id, {
-                size: {
-                    width: 'device'
-                }
-            }).then(function (sizedCover) {
+
+            if (sortedData[subcounter].cover) {
+                app.storage.getURL(sortedData[subcounter].cover[0].id, {
+                    size: {
+                        width: 'device'
+                    }
+                }).then(function (sizedCover) {
+                    promiseCounter++;
+                    sortedData[subcounter].cover[0].url = sizedCover;
+                    if (loopCounter === promiseCounter && imgsReady) {
+                        startPublishLoop();
+                    }
+                }).catch(function () {
+                    promiseCounter++;
+                    if (loopCounter === promiseCounter && imgsReady) {
+                        startPublishLoop();
+                    }
+                });
+            } else {
                 promiseCounter++;
-                sortedData[subcounter].cover[0].url = sizedCover;
-                if (loopCounter === promiseCounter && imgsReady) {
-                    startPublishLoop();
-                }
-            }).catch(function () {
-                promiseCounter++;
-                if (loopCounter === promiseCounter && imgsReady) {
-                    startPublishLoop();
-                }
-            });
+            }
         }
         if (loopCounter === promiseCounter) {
             startPublishLoop();
@@ -67,23 +72,23 @@ async function fillVideos() {
                 console.log(counter);
 
                 let
+                    $item = $template.clone(),
                     heading = sortedData[counter].heading,
                     description = sortedData[counter].description,
-                    link = 'https://youtu.be/'+sortedData[counter].videoLink,
-                    sizedCover = sortedData[counter].cover[0].url;
+                    link = 'https://youtu.be/'+sortedData[counter].videoLink;
 
-                let $item = $template.clone();
-
-                $item.attr('href', link);
-                $('.feature__heading', $item).html(heading);
-                $('.feature__description', $item).html(description);
-                if(sizedCover) {
+                if(sortedData[counter].cover) {
+                    let sizedCover = sortedData[counter].cover[0].url;
                     $item.css('background-image', 'url("'+sizedCover+'")');
-                    console.log(sizedCover);
                 }
                 else {
                     $item.addClass('feature__inner_blank');
                 }
+
+                $item.attr('href', link);
+                $('.feature__heading', $item).html(heading);
+                $('.feature__description', $item).html(description);
+
 
                 $('.feature_videos').append($item);
 
