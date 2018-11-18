@@ -639,6 +639,7 @@ a {
 }
 .docs-page {
   &__doc {
+    margin: 10px 0;
     text-align: center;
     img {
       display: inline-block;
@@ -648,6 +649,22 @@ a {
       box-shadow: none;
     }
   }
+
+  &__video {
+    width: 100%;
+    max-width: 600px;
+    padding: 45% 0 0;
+    margin: 0 auto;
+    position: relative;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
 }
 .news-slider {
   margin: 0 -7px;
