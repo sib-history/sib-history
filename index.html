@@ -75,94 +75,8 @@
         </nav>
         <div class="loading"><img class="loading__img" src="img/loading.svg"></div>
     </header>
-    <section class="feature">
-        <a href="https://youtu.be/su6L3s6_n5E" data-fancybox class="feature__inner feature__video" style="background-image: url('img/neissyakaemyj-istochnik-video.jpg')">
-            <div class="feature__details">
-                <div class="feature__tagline">
-                    <span class="feature__tag">видео</span>
-                </div>
-                <h2 class="feature__heading">Неиссякаемый источник патриотического воспитания</h2>
-                <p class="feature__description">
-
-                </p>
-            </div>
-        </a>
-    </section>
-    <section class="feature">
-        <a href="project.html?page=1540075583980" class="feature__inner" style="background-image: url('img/telemost_1.jpg')">
-            <div class="feature__details">
-                <div class="feature__tagline">
-                    <span class="feature__tag">события</span>
-                </div>
-                <h2 class="feature__heading">Телемост между региональными отделениями РИО</h2>
-                <p class="feature__description">
-                    Региональное отделение РИО в Новосибирске  провело в правительстве Новосибирской области уникальную   секцию в формате телемоста «Великая русская революция: губернские сюжеты».
-                </p>
-            </div>
-        </a>
-    </section>
-    <section class="feature _double">
-        <a href="project.html?page=1540075349397" class="feature__inner" style="background-image: url('img/feature1__bg.jpg')">
-            <div class="feature__details">
-                <div class="feature__tagline">
-                    <span class="feature__tag">архивы</span>
-                </div>
-                <h2 class="feature__heading">Электронная коллекция документов</h2>
-                <p class="feature__description">
-                    Уникальные исторические документы о революции и
-                    гражданской войне в Сибири теперь доступны каждому.
-                </p>
-            </div>
-        </a>
-        <a href="https://youtu.be/lqJJboCwprg" data-fancybox class="feature__inner feature__video" style="background-image: url('img/100let-video.jpg')">
-            <div class="feature__details">
-                <div class="feature__tagline">
-                    <span class="feature__tag">видео</span>
-                </div>
-                <h2 class="feature__heading">100 лет русской революции</h2>
-                <p class="feature__description">
-                    Историческое общество СФО специально для конференции «Октябрьская революция 1917 года в России и ее роль в мировой истории»
-                </p>
-            </div>
-        </a>
-    </section>
-    <section class="feature">
-        <a href="project.html?page=1540074149838" class="feature__inner" style="background-image: url('img/desant_1.jpg')">
-            <div class="feature__details">
-                <div class="feature__tagline">
-                    <span class="feature__tag">образование</span>
-                </div>
-                <h2 class="feature__heading">Проект «Краеведческий десант» - современный формат изучения Родины</h2>
-                <p class="feature__description">
-                    Историческое общество СФО провело в новосибирской государственной областной научной библиотеке презентацию своего проекта «Краеведческий десант». Встреча началась открытием фотовыставки и показом видео-блогов, снятых студентами-журналистами НГУ, а завершилась дискуссионным обсуждение проблем развития и преподавания региональной истории.
-                </p>
-            </div>
-        </a>
-    </section>
-    <!--<section class="feature _double">-->
-        <!--<a href="#" class="feature__inner" style="background-image: url('img/feature5__bg.jpg')">-->
-            <!--<div class="feature__details">-->
-                <!--<div class="feature__tagline">-->
-                    <!--<span class="feature__tag">образование</span>-->
-                <!--</div>-->
-                <!--<h2 class="feature__heading">Учебный год в школах Новосибирска начнется с уроков истории региона</h2>-->
-                <!--<p class="feature__description">-->
-                    <!--24 августа  состоялось пленарное заседание  XVII съезда работников образования Новосибирской области «Система образования Новосибирской области: гордимся прошлым, проектируем будущее».-->
-                <!--</p>-->
-            <!--</div>-->
-        <!--</a>-->
-        <!--<a href="https://d-lukashevich.github.io/history-sib/dist/news.htmlZZZ" class="feature__inner" style="background-image: url('img/feature6__bg.jpg')">-->
-            <!--<div class="feature__details">-->
-                <!--<div class="feature__tagline">-->
-                    <!--<span class="feature__tag">культура</span>-->
-                <!--</div>-->
-                <!--<h2 class="feature__heading">Выставки ювелирного искусства «Традиции эпохи Фаберже»</h2>-->
-                <!--<p class="feature__description">-->
-                    <!--Выставки ювелирного искусства «Традиции эпохи Фаберже», посвященной 170 – летию со дня рождения великого русского ювелира карла фаберже. АНО «Историческое общество СФО» являлось соорганизатором этого мероприятия.-->
-                <!--</p>-->
-            <!--</div>-->
-        <!--</a>-->
-    <!--</section>-->
+    <div class="projects-index-wrapper"></div>
+    <section class="feature _double feature_videos"></section>
     <footer class="footer">
         <div class="container">
             <div>
@@ -181,6 +95,33 @@
     <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
     <script type="text/javascript" src="js/slick.js"></script>
     <script src="js/main.js"></script>
+
+    <div class="project-template" hidden>
+        <section class="feature">
+            <a href="" class="feature__inner" style="">
+                <div class="feature__details">
+                    <div class="feature__tagline">
+                        <span class="feature__tag">проект</span>
+                    </div>
+                    <h2 class="feature__heading"></h2>
+                    <p class="feature__description"></p>
+                </div>
+            </a>
+        </section>
+    </div>
+
+    <div class="video-template" hidden>
+        <a href="#" data-fancybox class="feature__inner feature__video" style="">
+            <div class="feature__details">
+                <div class="feature__tagline">
+                    <span class="feature__tag">видео</span>
+                </div>
+                <h2 class="feature__heading"></h2>
+                <p class="feature__description"></p>
+            </div>
+        </a>
+    </div>
+    <script src="js/index_scripts.js"></script>
 </div>
 </body>
 </html>

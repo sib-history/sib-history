@@ -295,6 +295,12 @@ a {
     color: #fff;
     transition: 1s all ease;
     text-decoration: none;
+
+    &_blank {
+      background: url("../img/vector-logo.svg") no-repeat center center / 50% 50% !important;
+      background-attachment: unset !important;
+    }
+
     &:hover {
       color: #fff;
       box-shadow: 0 0 40px $color-secondary inset;
