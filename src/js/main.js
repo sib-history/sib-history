@@ -1,4 +1,5 @@
 loadPartners($('.footer__partners'));
+loadSpecial($('.header__projects'));
 
 $('.header__menu-mobile-icon').on('click', function () {
     $('.header__menu-list').slideToggle();
@@ -160,6 +161,28 @@ async function loadPartners($partnersContainer) {
                 initFooterSlider($partnersContainer);
             }
         });
+
+    }
+}
+
+async function loadSpecial($headerProjects) {
+    let data = await app.content.get('special', {
+        fields: [ 'title', 'preview', 'link' ]
+    });
+
+
+    let total = Object.keys(data).length;
+    let counter = 0;
+    for (key in data) {
+        let link = data[key].link;
+        let title = data[key].title;
+        app.storage.getURL(data[key].preview[0], {
+            size: {
+                width: 300
+            }
+        }).then(function (sizedUrl) {
+            $headerProjects.append('<li class="header__projects-item"><a href="'+link+'" title="'+title+'"><img class="header__projects-img" src="'+sizedUrl+'" alt="'+title+'"></a></li>');
+        }).catch(function() {console.log('error while loading special')});
 
     }
 }
