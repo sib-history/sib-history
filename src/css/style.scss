@@ -464,6 +464,9 @@ a {
     }
     &-description {
       margin-bottom: 0;
+      p {
+        margin: 0 0 5px;
+      }
     }
   }
 }
@@ -616,7 +619,8 @@ a {
     font-weight: bold;
   }
   p {
-    margin: 0 0 24px;
+    margin: 0;
+    //margin: 0 0 24px;
     line-height: 1.6em;
     letter-spacing: 0.005em;
     word-spacing: 0.08em;
@@ -667,7 +671,7 @@ a {
 
 }
 .news-slider {
-  margin: 0 -7px;
+  margin: 25px -7px 0;
   a {
     display: block;
     padding: 0 7px;
