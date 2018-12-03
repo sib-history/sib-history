@@ -10,7 +10,7 @@ async function fillVideos() {
     });
 
 
-    let $template = $('.video-template .feature__video').clone();
+    let $template = $('.video-template .feature').clone();
 
     let sortedData = {};
     let counter = -1;
@@ -27,7 +27,7 @@ async function fillVideos() {
         counter++;
         sortedData[counter] = item;
     });
-    renderEntries(2);
+    renderEntries(5);
 
     function renderEntries(amount) {
         switchLoading(true);
@@ -84,7 +84,7 @@ async function fillVideos() {
                     $item.addClass('feature__inner_blank');
                 }
 
-                $item.attr('href', link);
+                $('.feature__inner', $item).attr('href', link);
                 $('.feature__heading', $item).html(heading);
                 $('.feature__description', $item).html(description);
 
@@ -94,6 +94,18 @@ async function fillVideos() {
             }
 
             switchLoading(false);
+
+            if(!$('.show-more').length) {
+                $('.videos-page__list').after('<div class="show-more" title="Показать больше видео"></div>');
+                $('.show-more').on('click', function () {
+                    renderEntries(5);
+                })
+            }
+
+            if (counter < 0) {
+                $('.show-more').hide();
+            }
+
         }
 
 
