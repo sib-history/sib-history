@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    //= components/head.html
+</head>
+<body>
+<div class="wrapper single-page videos-page">
+    <div class="subwrapper">
+        //= components/header.html
+        <section class="feature">
+            <div class="feature__inner" style="background-image: url('img/video-header.jpg')">
+                <div class="feature__details">
+                    <h2 class="feature__heading">Видео</h2>
+                </div>
+            </div>
+        </section>
+        <main class="main">
+            <div class="container">
+                <div class="videos-page__list">
+
+                </div>
+            </div>
+        </main>
+    </div>
+    //= components/footer.html
+    <div class="video-template" hidden>
+        <section class="feature">
+            <a href="#" data-fancybox class="feature__inner feature__video" style="">
+                <div class="feature__details">
+                    <div class="feature__tagline">
+                        <span class="feature__tag">видео</span>
+                    </div>
+                    <h2 class="feature__heading"></h2>
+                    <p class="feature__description"></p>
+                </div>
+            </a>
+        </section>
+    </div>
+    <script src="js/video_scripts.js"></script>
+</div>
+</body>
+</html>
