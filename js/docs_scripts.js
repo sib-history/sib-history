@@ -6,7 +6,7 @@ async function fillPage() {
 
     let data = await app.content.get('docs', {
         populate: ['preview'],
-        fields: [ 'title', 'preview', 'video',  'fileLink' ]
+        fields: [ 'title', 'preview', 'video',  'fileLink', 'order' ]
     });
 
 
