@@ -138,10 +138,18 @@ function getPage() {
 
 
 async function loadPartners($partnersContainer) {
-    let data = await app.content.get('partners', { populate: [ 'img' ] });
+    let data = {};
+    await app.content.get('partners', { populate: [ 'img' ] }).then((result) => {
+        data = result;
+    }).catch(async (e) => {
+        console.warn(e);
+    });
 
 
     let total = Object.keys(data).length;
+    if(!total) $partnersContainer.closest('.container').hide();
+
+
     let counter = 0;
     for (key in data) {
         let link = data[key].link;
@@ -166,8 +174,14 @@ async function loadPartners($partnersContainer) {
 }
 
 async function loadSpecial($headerProjects) {
-    let data = await app.content.get('special', {
+
+    let data = {};
+    await app.content.get('special', {
         fields: [ 'title', 'preview', 'link' ]
+    }).then((result) => {
+        data = result;
+    }).catch(async (e) => {
+        console.warn(e);
     });
 
 
@@ -182,7 +196,7 @@ async function loadSpecial($headerProjects) {
             }
         }).then(function (sizedUrl) {
             $headerProjects.append('<li class="header__projects-item"><a href="'+link+'" title="'+title+'"><img class="header__projects-img" src="'+sizedUrl+'" alt="'+title+'"></a></li>');
-        }).catch(function() {console.log('error while loading special')});
+        }).catch(function() {console.error('error while loading special')});
 
     }
 }
