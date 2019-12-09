@@ -4,9 +4,23 @@ async function fillVideos() {
 
     switchLoading(true);
 
-    let data = await app.content.get('video', {
+    let data = {};
+    await app.content.get('video', {
         populate: ['cover'],
         fields: [ 'id', 'heading', 'description', 'videoLink', 'cover', 'order' ]
+    }).then((result) => {
+        data = result;
+    }).catch(async (e) => {
+        console.warn(e);
+        if(e.code === 'storage/quota-exceeded') {
+            await app.content.get('video', {
+                fields: [ 'id', 'heading', 'description', 'videoLink', 'order' ]
+            }).then((result)=> {
+                data = result;
+            }).catch((e)=> {
+                console.error(e);
+            })
+        }
     });
 
 
@@ -68,7 +82,6 @@ async function fillVideos() {
 
         function startPublishLoop() {
             for (let total = counter; counter >= 0 && counter > (total - amount); counter-- ) {
-                console.log(counter);
 
                 let
                     $item = $template.clone(),
