@@ -4,12 +4,24 @@ async function fillPage() {
 
     switchLoading(true);
 
-    let data = await app.content.get('docs', {
+    let data = {};
+    await app.content.get('docs', {
         populate: ['preview'],
         fields: [ 'title', 'preview', 'video',  'fileLink', 'order' ]
+    }).then((result) => {
+        data = result;
+    }).catch(async (e) => {
+        console.warn(e);
+        if(e.code === 'storage/quota-exceeded') {
+            await app.content.get('docs', {
+                fields: [ 'title', 'video',  'fileLink', 'order' ]
+            }).then((result)=> {
+                data = result;
+            }).catch((e)=> {
+                console.error(e);
+            })
+        }
     });
-
-
 
     let $template = $('.docs-template .docs-page__item').clone();
 
