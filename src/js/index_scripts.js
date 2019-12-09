@@ -5,17 +5,31 @@ async function fillVideos() {
 
     switchLoading(true);
 
-    let data = await app.content.get('video', {
+    let data = {};
+    await app.content.get('video', {
         populate: ['cover'],
         fields: [ 'id', 'heading', 'description', 'videoLink', 'cover', 'order' ]
+    }).then((result) => {
+        data = result;
+    }).catch(async (e) => {
+        console.warn(e);
+        if(e.code === 'storage/quota-exceeded') {
+            await app.content.get('video', {
+                fields: [ 'id', 'heading', 'description', 'videoLink', 'order' ]
+            }).then((result)=> {
+                data = result;
+            }).catch((e)=> {
+                console.error(e);
+            })
+        }
     });
-
 
     let $template = $('.video-template .feature__video').clone();
 
     let sortedData = {};
     let counter = -1;
     let noOrderedItems = [];
+
     for (key in data) {
         if (data[key].order > -1) {
             sortedData[data[key].order] = data[key];
@@ -39,7 +53,7 @@ async function fillVideos() {
         for (let total = counter, subcounter = counter; subcounter >= 0 && subcounter > (total - amount); subcounter -- ) {
             loopCounter++;
 
-            if (sortedData[subcounter].cover) {
+            if (sortedData[subcounter] && sortedData[subcounter].cover && sortedData[subcounter].cover[0]) {
                 app.storage.getURL(sortedData[subcounter].cover[0].id, {
                     size: {
                         width: 'device'
@@ -69,7 +83,6 @@ async function fillVideos() {
 
         function startPublishLoop() {
             for (let total = counter; counter >= 0 && counter > (total - amount); counter-- ) {
-                console.log(counter);
 
                 let
                     $item = $template.clone(),
@@ -77,7 +90,7 @@ async function fillVideos() {
                     description = sortedData[counter].description,
                     link = 'https://youtu.be/'+sortedData[counter].videoLink;
 
-                if(sortedData[counter].cover) {
+                if(sortedData[counter].cover && sortedData[counter].cover[0]) {
                     let sizedCover = sortedData[counter].cover[0].url;
                     $item.css('background-image', 'url("'+sizedCover+'")');
                 }
@@ -108,9 +121,23 @@ async function fillProjects() {
 
     switchLoading(true);
 
-    let data = await app.content.get('projects', {
-        populate: ['preview'],
+    let data = {};
+    await app.content.get('projects', {
+        populate: ['cover'],
         fields: [ 'id', 'title', 'description', 'preview', 'order' ]
+    }).then((result) => {
+        data = result;
+    }).catch(async (e) => {
+        console.warn(e);
+        if(e.code === 'storage/quota-exceeded') {
+            await app.content.get('projects', {
+                fields: [ 'id', 'title', 'description', 'order' ]
+            }).then((result)=> {
+                data = result;
+            }).catch((e)=> {
+                console.error(e);
+            })
+        }
     });
 
 
@@ -143,22 +170,27 @@ async function fillProjects() {
         let imgsReady = false;
         for (let total = counter, subcounter = counter; subcounter >= 0 && subcounter > (total - amount); subcounter -- ) {
             loopCounter++;
-            app.storage.getURL(sortedData[subcounter].preview[0].id, {
-                size: {
-                    width: 1024
-                }
-            }).then(function (sizedPreview) {
+
+            if (sortedData[subcounter] && sortedData[subcounter].preview && sortedData[subcounter].preview[0]) {
+                app.storage.getURL(sortedData[subcounter].preview[0].id, {
+                    size: {
+                        width: 1024
+                    }
+                }).then(function (sizedPreview) {
+                    promiseCounter++;
+                    sortedData[subcounter].preview[0].url = sizedPreview;
+                    if (loopCounter === promiseCounter && imgsReady) {
+                        startPublishLoop();
+                    }
+                }).catch(function () {
+                    promiseCounter++;
+                    if (loopCounter === promiseCounter && imgsReady) {
+                        startPublishLoop();
+                    }
+                });
+            } else {
                 promiseCounter++;
-                sortedData[subcounter].preview[0].url = sizedPreview;
-                if (loopCounter === promiseCounter && imgsReady) {
-                    startPublishLoop();
-                }
-            }).catch(function () {
-                promiseCounter++;
-                if (loopCounter === promiseCounter && imgsReady) {
-                    startPublishLoop();
-                }
-            });
+            }
         }
         if (loopCounter === promiseCounter) {
             startPublishLoop();
@@ -168,7 +200,6 @@ async function fillProjects() {
 
         function startPublishLoop() {
             for (let total = counter; counter >= 0 && counter > (total - amount); counter-- ) {
-                console.log(counter);
 
                 let
                     title = sortedData[counter].title,
