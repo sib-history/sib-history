@@ -4,9 +4,24 @@ async function fillPage() {
 
     switchLoading(true);
 
-    let data = await app.content.get('projects', {
+
+    let data = {};
+    await app.content.get('projects', {
         populate: ['preview'],
         fields: [ 'id', 'title', 'description', 'preview', 'order' ]
+    }).then((result) => {
+        data = result;
+    }).catch(async (e) => {
+        console.warn(e);
+        if(e.code === 'storage/quota-exceeded') {
+            await app.content.get('projects', {
+                fields: [ 'id', 'title', 'description', 'order' ]
+            }).then((result)=> {
+                data = result;
+            }).catch((e)=> {
+                console.error(e);
+            })
+        }
     });
 
 
@@ -39,22 +54,28 @@ async function fillPage() {
         let imgsReady = false;
         for (let total = counter, subcounter = counter; subcounter >= 0 && subcounter > (total - amount); subcounter -- ) {
             loopCounter++;
-            app.storage.getURL(sortedData[subcounter].preview[0].id, {
-                size: {
-                    width: 880
-                }
-            }).then(function (sizedPreview) {
+
+            if (sortedData[subcounter] && sortedData[subcounter].preview && sortedData[subcounter].preview[0]) {
+                app.storage.getURL(sortedData[subcounter].preview[0].id, {
+                    size: {
+                        width: 880
+                    }
+                }).then(function (sizedPreview) {
+                    promiseCounter++;
+                    sortedData[subcounter].preview[0].url = sizedPreview;
+                    if (loopCounter === promiseCounter && imgsReady) {
+                        startPublishLoop();
+                    }
+                }).catch(function () {
+                    promiseCounter++;
+                    if (loopCounter === promiseCounter && imgsReady) {
+                        startPublishLoop();
+                    }
+                });
+            } else {
                 promiseCounter++;
-                sortedData[subcounter].preview[0].url = sizedPreview;
-                if (loopCounter === promiseCounter && imgsReady) {
-                    startPublishLoop();
-                }
-            }).catch(function () {
-                promiseCounter++;
-                if (loopCounter === promiseCounter && imgsReady) {
-                    startPublishLoop();
-                }
-            });
+            }
+
         }
         if (loopCounter === promiseCounter) {
             startPublishLoop();
@@ -64,30 +85,29 @@ async function fillPage() {
 
         function startPublishLoop() {
             for (let total = counter; counter >= 0 && counter > (total - amount); counter-- ) {
-                console.log(counter);
+                if(sortedData[counter]) {
+                    let
+                        title = sortedData[counter].title,
+                        description = sortedData[counter].description,
+                        link = 'project.html?page='+sortedData[counter].id,
+                        sizedPreview = sortedData[counter].preview && sortedData[counter].preview[0].url;
 
-                let
-                    title = sortedData[counter].title,
-                    description = sortedData[counter].description,
-                    link = 'project.html?page='+sortedData[counter].id,
-                    sizedPreview = sortedData[counter].preview[0].url;
+                    let $item = $template.clone();
 
-                let $item = $template.clone();
+                    $('.projects-page__item-link', $item).attr('href', link);
+                    $('.projects-page__item-btn a', $item).attr('href', link);
+                    $('.projects-page__item-heading a', $item).attr('href', link).html(title);
+                    $('.projects-page__item-preview-title', $item).html(title);
+                    $('.projects-page__item-description', $item).html(description);
+                    if(sizedPreview) {
+                        $('.projects-page__item-img', $item).attr('src', sizedPreview);
+                    }
+                    else {
+                        $('.projects-page__item-img', $item).addClass('projects-page__item-img_blank');
+                    }
 
-                $('.projects-page__item-link', $item).attr('href', link);
-                $('.projects-page__item-btn a', $item).attr('href', link);
-                $('.projects-page__item-heading a', $item).attr('href', link).html(title);
-                $('.projects-page__item-preview-title', $item).html(title);
-                $('.projects-page__item-description', $item).html(description);
-                if(sizedPreview) {
-                    $('.projects-page__item-img', $item).attr('src', sizedPreview);
+                    $('.projects-page__list').append($item);
                 }
-                else {
-                    $('.projects-page__item-img', $item).addClass('projects-page__item-img_blank');
-                }
-
-                $('.projects-page__list').append($item);
-
             }
 
             switchLoading(false);
