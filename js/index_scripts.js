@@ -12,16 +12,16 @@ async function fillVideos() {
     }).then((result) => {
         data = result;
     }).catch(async (e) => {
-       console.warn(e);
-       if(e.code === 'storage/quota-exceeded') {
-           await app.content.get('video', {
-               fields: [ 'id', 'heading', 'description', 'videoLink', 'order' ]
-           }).then((result)=> {
-               data = result;
-           }).catch((e)=> {
-               console.error(e);
-           })
-       }
+        console.warn(e);
+        if(e.code === 'storage/quota-exceeded') {
+            await app.content.get('video', {
+                fields: [ 'id', 'heading', 'description', 'videoLink', 'order' ]
+            }).then((result)=> {
+                data = result;
+            }).catch((e)=> {
+                console.error(e);
+            })
+        }
     });
 
     let $template = $('.video-template .feature__video').clone();
@@ -123,7 +123,7 @@ async function fillProjects() {
 
     let data = {};
     await app.content.get('projects', {
-        populate: ['cover'],
+        populate: ['preview'],
         fields: [ 'id', 'title', 'description', 'preview', 'order' ]
     }).then((result) => {
         data = result;

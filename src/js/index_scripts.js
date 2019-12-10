@@ -123,7 +123,7 @@ async function fillProjects() {
 
     let data = {};
     await app.content.get('projects', {
-        populate: ['cover'],
+        populate: ['preview'],
         fields: [ 'id', 'title', 'description', 'preview', 'order' ]
     }).then((result) => {
         data = result;
